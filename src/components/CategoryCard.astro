@@ -1,0 +1,33 @@
+---
+import Media from './Media.astro';
+import Icon from './Icon.astro';
+import { categoryHref, type Category } from '../data/catalog';
+interface Props {
+  category: Category;
+}
+const { category: c } = Astro.props;
+---
+
+<a
+  class:list={['category-card', `category-${c.type}`]}
+  href={categoryHref(c.slug)}
+>
+  <div class="category-image">
+    {
+      c.image ? (
+        <Media id={c.image} alt={c.name} />
+      ) : (
+        <div class="image-placeholder">
+          <>
+            <Icon name="camera" size={30} />
+            <span>Фото готовится</span>
+          </>
+        </div>
+      )
+    }
+  </div>
+  <div class="category-body">
+    <h3>{c.name}</h3><p>{c.short}</p><span class="card-arrow"
+      ><Icon name="diagonal" size={21} /></span>
+  </div>
+</a>

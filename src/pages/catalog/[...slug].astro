@@ -1,0 +1,214 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import Icon from '../../components/Icon.astro';
+import Gallery from '../../components/Gallery.astro';
+import {
+  categories,
+  subcategories,
+  allCategories,
+  categoryHref,
+  type Category,
+} from '../../data/catalog';
+import { company } from '../../data/company';
+export function getStaticPaths() {
+  return allCategories.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+interface Props {
+  category: Category;
+}
+const { category: c } = Astro.props;
+const isTactile = c.type === 'tactile';
+const crumbs = [
+  { name: 'Каталог', href: '/catalog/' },
+  ...(c.slug.includes('/')
+    ? [{ name: 'Тротуарная плитка', href: '/catalog/trotuarnaya-plitka/' }]
+    : []),
+  { name: c.name },
+];
+const schemaCrumbs = crumbs.map((item) => ({
+  name: item.name,
+  href: ('href' in item && item.href) || categoryHref(c.slug),
+}));
+const groups = [...new Set(c.products.map((p) => p.group).filter(Boolean))];
+---
+
+<BaseLayout
+  title={`${c.name} от производителя в Барановичах и Беларуси — НИЯЗ`}
+  description={`${c.name} собственного производства НИЯЗ. ${c.short}. Продажа, доставка и установка в Барановичах и по всей Беларуси. Цены по телефону.`}
+  crumbs={schemaCrumbs}
+>
+  <PageHeading
+    title={c.name}
+    text={c.intro}
+    crumbs={crumbs}
+    eyebrow={isTactile
+      ? 'Доступная среда · собственное производство'
+      : undefined}
+  />
+  <section class="container page-section">
+    <div class="category-layout">
+      <aside class="catalog-sidebar">
+        <h2>Каталог продукции</h2><nav aria-label="Направления каталога">
+          {
+            categories.map((category) => (
+              <a
+                href={categoryHref(category.slug)}
+                aria-current={
+                  c.slug.startsWith(category.slug) ? 'page' : undefined
+                }
+              >
+                {category.name}
+              </a>
+            ))
+          }
+        </nav><div class="sidebar-contact">
+          <p>Стоимость, размеры и доставка — по телефону</p><a
+            href={company.phoneHref}>{company.phone}</a>
+        </div>
+      </aside>
+      <div class="category-content">
+        <div class="price-note">
+          <Icon name="phone" size={15} />Цены уточняйте по телефону
+        </div>
+        {
+          c.slug === 'trotuarnaya-plitka' ? (
+            <div class="subcategories">
+              {subcategories.map((category) => (
+                <CategoryCard category={category} />
+              ))}
+            </div>
+          ) : groups.length ? (
+            groups.map((group) => (
+              <section>
+                <>
+                  <h2 class="group-title">{group}</h2>
+                  <div class="product-grid">
+                    {c.products
+                      .filter((p) => p.group === group)
+                      .map((product) => (
+                        <ProductCard product={product} />
+                      ))}
+                  </div>
+                </>
+              </section>
+            ))
+          ) : c.products.length ? (
+            <div class="product-grid">
+              {c.products.map((product) => (
+                <ProductCard product={product} tactile={isTactile} />
+              ))}
+            </div>
+          ) : (
+            <div class="empty-product">
+              <div class="image-placeholder">
+                <>
+                  <Icon name="camera" size={42} />
+                  <span>Фотографии продукции готовятся</span>
+                </>
+              </div>
+            </div>
+          )
+        }
+        {
+          isTactile && (
+            <>
+              <>
+                <div class="certificate-banner">
+                  <>
+                    <Icon name="document" size={34} />
+                    <div>
+                      <>
+                        <h2>Сертификат соответствия</h2>
+                        <p>Выдан 27.10.2025 · срок по 26.10.2030</p>
+                      </>
+                    </div>
+                    <a
+                      href="/documents/certificate-tactile.jpg"
+                      class="text-link"
+                      data-lightbox="Сертификат соответствия на тактильную плитку НИЯЗ-ГРУПП"
+                    >
+                      Смотреть документ <Icon name="diagonal" size={18} />
+                    </a>
+                  </>
+                </div>
+                <div class="category-after">
+                  <>
+                    <h2>Для благоустройства доступной среды</h2>
+                    <p>
+                      Поставляем тактильную плитку для пешеходных пространств и
+                      территорий объектов. Работаем с организациями и частными
+                      заказчиками. Обсудим ваш проект, нужный рисунок
+                      поверхности и объём поставки по телефону или электронной
+                      почте.
+                    </p>
+                  </>
+                </div>
+              </>
+            </>
+          )
+        }
+        {
+          !isTactile && (
+            <div class="category-after">
+              <>
+                <h2>
+                  {c.slug === 'trotuarnaya-plitka'
+                    ? 'От выбора плитки до укладки'
+                    : 'Производство, доставка и установка'}
+                </h2>
+                <p>
+                  Можно приехать посмотреть образцы в Барановичах на Слонимское
+                  шоссе, 18. Позвоните — уточним стоимость, доступные варианты и
+                  договоримся о посещении.
+                </p>
+                <a
+                  class="text-link"
+                  style="margin-top:18px"
+                  href={
+                    c.type === 'paving'
+                      ? '/services/ukladka-trotuarnoj-plitki/'
+                      : '/services/'
+                  }
+                >
+                  {c.type === 'paving'
+                    ? 'Укладка тротуарной плитки'
+                    : 'Подробнее об услугах'}
+                  <Icon size={18} />
+                </a>
+              </>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+  {
+    isTactile && (
+      <section class="section section-soft">
+        <div class="container">
+          <>
+            <div class="section-head">
+              <>
+                <h2>Наша тактильная плитка</h2>
+                <a class="text-link" href="/photos/">
+                  Все фото <Icon size={18} />
+                </a>
+              </>
+            </div>
+            <Gallery limit={3} />
+          </>
+        </div>
+      </section>
+    )
+  }
+  <ContactBand
+    title={isTactile ? 'Нужна тактильная плитка для объекта?' : undefined}
+  />
+</BaseLayout>

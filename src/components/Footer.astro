@@ -1,0 +1,46 @@
+---
+import { company, navigation } from '../data/company';
+import { categories, categoryHref } from '../data/catalog';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <Logo footer /><p class="footer-tagline">
+          Производим для ваших<br />пространств.
+        </p><p class="small">Барановичи и вся Беларусь</p>
+      </div>
+      <div>
+        <h2>Продукция</h2>{
+          categories.map((c) => <a href={categoryHref(c.slug)}>{c.name}</a>)
+        }
+      </div>
+      <div>
+        <h2>Компания</h2>{
+          navigation
+            .filter((n) => n.href !== '/' && n.href !== '/catalog/')
+            .map((n) => <a href={n.href}>{n.name}</a>)
+        }
+      </div>
+      <div class="footer-contacts">
+        <h2>Свяжитесь с нами</h2><a
+          class="footer-phone"
+          href={company.phoneHref}>{company.phone}</a
+        ><a href={company.emailHref}>{company.email}</a><p>{company.address}</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} НИЯЗ</span><span
+        >{company.legalName} · УНП {company.unp}</span
+      ><span>Цены уточняйте по телефону</span>
+    </div>
+  </div>
+</footer>
+<a class="mobile-call-bar" href={company.phoneHref}
+  ><Icon name="phone" size={19} /><span>Позвонить</span><span
+    >{company.phone}</span
+  ></a
+>

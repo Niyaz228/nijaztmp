@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import { categories } from '../../data/catalog';
+---
+
+<BaseLayout
+  title="Каталог продукции НИЯЗ — плитка, заборы и металлоконструкции"
+  description="Тротуарная и тактильная плитка, железобетонные заборы, ворота, калитки и ограничители парковки. Производство в Барановичах, доставка по Беларуси."
+  crumbs={[{ name: 'Каталог', href: '/catalog/' }]}
+>
+  <PageHeading
+    title="Каталог продукции"
+    text="Производим в Барановичах. Доставляем и устанавливаем по всей Беларуси. Выберите направление — всё остальное обсудим по телефону."
+  />
+  <section class="container page-section catalog-categories">
+    <div class="category-grid">
+      {categories.map((category) => <CategoryCard category={category} />)}
+    </div>
+  </section><ContactBand />
+</BaseLayout>

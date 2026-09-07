@@ -1,0 +1,35 @@
+---
+import Media from './Media.astro';
+import Icon from './Icon.astro';
+import { company } from '../data/company';
+import type { Product } from '../data/catalog';
+interface Props {
+  product: Product;
+  tactile?: boolean;
+}
+const { product: p, tactile = false } = Astro.props;
+---
+
+<article class:list={['product-card', { tactile }]}>
+  <div class="product-image">
+    {
+      p.image ? (
+        <Media id={p.image} alt={p.name} />
+      ) : (
+        <div class="image-placeholder">
+          <>
+            <Icon name="camera" size={29} />
+            <span>Фото готовится</span>
+          </>
+        </div>
+      )
+    }
+  </div>
+  <div class="product-body">
+    {tactile && <span class="product-label">Бетонная · жёлтая</span>}<h3>
+      {p.name}
+    </h3>{p.detail && <p class="product-detail">{p.detail}</p>}<a
+      href={company.phoneHref}
+      class="product-contact">Уточнить цену <Icon size={18} /></a>
+  </div>
+</article>

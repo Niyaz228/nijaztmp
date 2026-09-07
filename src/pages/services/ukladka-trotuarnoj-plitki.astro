@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import Icon from '../../components/Icon.astro';
+import Media from '../../components/Media.astro';
+import { company } from '../../data/company';
+const crumbs = [
+  { name: 'Услуги', href: '/services/' },
+  {
+    name: 'Укладка тротуарной плитки',
+    href: '/services/ukladka-trotuarnoj-plitki/',
+  },
+];
+---
+
+<BaseLayout
+  title="Укладка тротуарной плитки под ключ в Барановичах и Беларуси — НИЯЗ"
+  description="Укладка тротуарной плитки под ключ от производителя НИЯЗ. Подбор продукции, доставка и работы на объекте. Стоимость обсуждается по телефону."
+  crumbs={crumbs}
+>
+  <PageHeading
+    title="Укладка тротуарной плитки"
+    crumbs={[crumbs[0], { name: crumbs[1].name }]}
+    text="Производим плитку и выполняем укладку под ключ. Работаем с частными участками и объектами организаций в Барановичах и по всей Беларуси."
+  />
+  <section class="container page-section split-content">
+    <Media
+      id="tactile-installation"
+      alt="Работы по укладке тактильной плитки"
+    /><div>
+      <span class="eyebrow">Один подрядчик</span><h2>
+        Плитка, доставка<br />и укладка
+      </h2><p>
+        Поможем выбрать продукцию для вашего объекта и согласуем работы.
+        Стоимость зависит от участка и задачи — подробности обсудим по телефону.
+      </p><p>
+        Также выполняем монтаж тактильной плитки для благоустройства доступной
+        среды.
+      </p><a href={company.phoneHref} class="button"
+        >Обсудить укладку <Icon name="phone" size={18} /></a
+      ><a
+        class="text-link"
+        style="display:flex;margin-top:22px"
+        href="/catalog/trotuarnaya-plitka/"
+        >Выбрать тротуарную плитку <Icon size={18} /></a>
+    </div>
+  </section><ContactBand />
+</BaseLayout>

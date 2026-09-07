@@ -1,0 +1,76 @@
+---
+import { company, navigation } from '../data/company';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+const path = Astro.url.pathname;
+const active = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+<header class="header">
+  <div class="container header-top">
+    <Logo />
+    <div class="header-location">
+      <Icon name="pin" size={19} /><span
+        >Барановичи<span>Работаем по всей Беларуси</span></span>
+    </div>
+    <div class="header-contact">
+      <a class="header-phone" href={company.phoneHref}>{company.phone}</a><a
+        class="header-email"
+        href={company.emailHref}>{company.email}</a>
+    </div>
+    <a
+      class="header-call"
+      href={company.phoneHref}
+      aria-label="Позвонить в НИЯЗ"><Icon name="phone" size={20} /></a
+    >
+  </div>
+  <div class="nav-border">
+    <div class="container nav-row">
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        {
+          navigation.map(({ name, href }) => (
+            <a href={href} aria-current={active(href) ? 'page' : undefined}>
+              {name}
+            </a>
+          ))
+        }
+      </nav>
+      <span class="nav-note">Собственное производство</span>
+      <details class="mobile-menu">
+        <summary><span class="menu-bars" aria-hidden="true"></span>Меню</summary
+        ><nav aria-label="Мобильная навигация">
+          {
+            navigation.map(({ name, href }) => (
+              <a href={href} aria-current={active(href) ? 'page' : undefined}>
+                {name}
+                <Icon size={18} />
+              </a>
+            ))
+          }<a class="mobile-email" href={company.emailHref}>{company.email}</a>
+        </nav>
+      </details>
+      <a class="mobile-catalog" href="/catalog/"
+        >Каталог продукции <Icon size={16} /></a
+      >
+    </div>
+  </div>
+</header>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu?.open) {
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (
+      menu?.open &&
+      event.target instanceof Node &&
+      !menu.contains(event.target)
+    )
+      menu.open = false;
+  });
+</script>

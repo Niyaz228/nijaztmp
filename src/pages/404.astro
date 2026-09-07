@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+
+<BaseLayout
+  title="Страница не найдена — НИЯЗ"
+  description="Перейдите в каталог НИЯЗ, чтобы найти плитку, заборы и продукцию для благоустройства."
+  noindex
+  ><div class="container error-page">
+    <span class="eyebrow">404</span><h1>Здесь пока нет страницы</h1><p>
+      Возможно, адрес изменился. Нужную продукцию можно найти в каталоге.
+    </p><a class="button" href="/catalog/">Перейти в каталог <Icon /></a>
+  </div></BaseLayout
+>

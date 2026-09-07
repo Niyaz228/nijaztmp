@@ -1,0 +1,152 @@
+---
+import '@fontsource/manrope/cyrillic-600.css';
+import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/cyrillic-700.css';
+import '@fontsource/manrope/latin-700.css';
+import '@fontsource-variable/golos-text/index.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/company';
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  crumbs?: { name: string; href: string }[];
+}
+const { title, description, noindex = false, crumbs = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, 'https://nijaz.by').href;
+const robots =
+  noindex || import.meta.env.PUBLIC_SITE_LIVE !== 'true'
+    ? 'noindex, nofollow'
+    : 'index, follow';
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: company.name,
+    legalName: company.legalName,
+    url: 'https://nijaz.by',
+    telephone: '+375333227636',
+    email: company.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'ул. Слонимское шоссе, 18',
+      addressLocality: 'Барановичи',
+      postalCode: '225413',
+      addressCountry: 'BY',
+    },
+  },
+  ...(crumbs.length
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [{ name: 'Главная', href: '/' }, ...crumbs].map(
+            (c, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              name: c.name,
+              item: new URL(c.href, 'https://nijaz.by').href,
+            }),
+          ),
+        },
+      ]
+    : []),
+];
+---
+
+<!doctype html>
+<html lang="ru">
+  <head
+    ><meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    /><meta name="theme-color" content="#f5c432" /><meta
+      name="robots"
+      content={robots}
+    /><title>{title}</title><meta
+      name="description"
+      content={description}
+    /><link rel="canonical" href={canonical} /><link
+      rel="icon"
+      href="/favicon.svg"
+      type="image/svg+xml"
+    /><meta property="og:locale" content="ru_BY" /><meta
+      property="og:type"
+      content="website"
+    /><meta property="og:site_name" content="НИЯЗ" /><meta
+      property="og:title"
+      content={title}
+    /><meta property="og:description" content={description} /><meta
+      property="og:url"
+      content={canonical}
+    /><meta
+      property="og:image"
+      content="https://nijaz.by/images/hero.webp"
+    /><script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+    /></head
+  >
+  <body
+    ><Header /><main id="main"><slot /></main><Footer />
+    <dialog class="lightbox" aria-label="Просмотр фотографии">
+      <button
+        class="lightbox-close"
+        type="button"
+        aria-label="Закрыть фотографию"><Icon name="close" /></button
+      ><img class="lightbox-image" alt="" /><p class="lightbox-caption"></p>
+    </dialog>
+    <script>
+      const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+      const image = dialog?.querySelector<HTMLImageElement>('img');
+      const caption = dialog?.querySelector<HTMLElement>('p');
+      let trigger: HTMLAnchorElement | null = null;
+      document
+        .querySelectorAll<HTMLAnchorElement>('a[data-lightbox]')
+        .forEach((link) =>
+          link.addEventListener('click', (event) => {
+            if (
+              !dialog ||
+              !image ||
+              !caption ||
+              event.ctrlKey ||
+              event.metaKey ||
+              event.shiftKey ||
+              event.altKey
+            )
+              return;
+            event.preventDefault();
+            trigger = link;
+            image.src = link.href;
+            image.alt = link.dataset.lightbox || '';
+            caption.textContent = image.alt;
+            dialog.showModal();
+            document.body.classList.add('dialog-open');
+          }),
+        );
+      dialog
+        ?.querySelector('button')
+        ?.addEventListener('click', () => dialog.close());
+      dialog?.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+          const r = dialog.getBoundingClientRect();
+          if (
+            event.clientX < r.left ||
+            event.clientX > r.right ||
+            event.clientY < r.top ||
+            event.clientY > r.bottom
+          )
+            dialog.close();
+        }
+      });
+      dialog?.addEventListener('close', () => {
+        document.body.classList.remove('dialog-open');
+        trigger?.focus();
+      });
+    </script>
+  </body>
+</html>

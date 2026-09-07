@@ -1,0 +1,25 @@
+---
+import { company } from '../data/company';
+import Icon from './Icon.astro';
+interface Props {
+  title?: string;
+  text?: string;
+}
+const {
+  title = 'Подберём продукцию для вашего объекта',
+  text = 'Позвоните или напишите. Обсудим ассортимент, стоимость, доставку и установку.',
+} = Astro.props;
+---
+
+<section class="contact-band">
+  <div class="container contact-band-inner">
+    <div>
+      <span class="eyebrow">Давайте обсудим</span><h2>{title}</h2><p>{text}</p>
+    </div><div class="contact-band-actions">
+      <a class="big-phone" href={company.phoneHref}>{company.phone}</a><a
+        class="text-link"
+        href={company.emailHref}
+        >{company.email}<Icon name="diagonal" size={18} /></a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,122 @@
+{
+  "hero": {
+    "src": "/images/hero.webp",
+    "width": 1200,
+    "height": 896,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/img_3363-15-06-22-18-43.jpg"
+  },
+  "tactile-cones": {
+    "src": "/images/tactile-cones.webp",
+    "width": 293,
+    "height": 189,
+    "source": "legacy/for-new-agent/source-evolution/images/block-1/plitka3.png"
+  },
+  "tactile-lines": {
+    "src": "/images/tactile-lines.webp",
+    "width": 293,
+    "height": 186,
+    "source": "legacy/for-new-agent/source-evolution/images/block-1/plitka2.png"
+  },
+  "tactile-diagonal": {
+    "src": "/images/tactile-diagonal.webp",
+    "width": 291,
+    "height": 184,
+    "source": "legacy/for-new-agent/source-evolution/images/block-1/plitka1.png"
+  },
+  "tactile-stock": {
+    "src": "/images/tactile-stock.webp",
+    "width": 1200,
+    "height": 896,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/img_1860-15-06-22-18-43.jpg"
+  },
+  "tactile-pallets": {
+    "src": "/images/tactile-pallets.webp",
+    "width": 1200,
+    "height": 896,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/img_2864-15-06-22-18-43.jpg"
+  },
+  "tactile-squares": {
+    "src": "/images/tactile-squares.webp",
+    "width": 1200,
+    "height": 896,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/img_4649-15-06-22-18-43.jpg"
+  },
+  "tactile-installation": {
+    "src": "/images/tactile-installation.webp",
+    "width": 1200,
+    "height": 675,
+    "source": "legacy/for-new-agent/source-evolution/images/work/1542073708343_default-1.jpg"
+  },
+  "tactile-walkway": {
+    "src": "/images/tactile-walkway.webp",
+    "width": 740,
+    "height": 600,
+    "source": "legacy/for-new-agent/source-evolution/images/work/image00009.jpg"
+  },
+  "tactile-crossing": {
+    "src": "/images/tactile-crossing.webp",
+    "width": 800,
+    "height": 598,
+    "source": "legacy/for-new-agent/source-evolution/images/work/image00004.jpg"
+  },
+  "brick": {
+    "src": "/images/brick.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/55/Image00003-ba7f9e23ce.jpg"
+  },
+  "grass": {
+    "src": "/images/grass.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/73/002-1be5fb2a72.JPG"
+  },
+  "coil": {
+    "src": "/images/coil.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/54/Image00004-c14fe0f2d0.jpg"
+  },
+  "star": {
+    "src": "/images/star.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/36/Image00008-0bb5a02e7b.jpg"
+  },
+  "eight-bricks": {
+    "src": "/images/eight-bricks.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/37/Image00008-c4ca06c23b.jpg"
+  },
+  "fence": {
+    "src": "/images/fence.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/70/003-74fe9f35ab.JPG"
+  },
+  "gates": {
+    "src": "/images/gates.webp",
+    "width": 200,
+    "height": 150,
+    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/65/Image00001-4dff3fee5f.jpg"
+  },
+  "client-brest": {
+    "src": "/images/client-brest.webp",
+    "width": 925,
+    "height": 611,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/logotip_brestzhilstroy.jpg"
+  },
+  "client-road": {
+    "src": "/images/client-road.webp",
+    "width": 191,
+    "height": 191,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/bez-nazvaniya.png"
+  },
+  "client-bus": {
+    "src": "/images/client-bus.webp",
+    "width": 117,
+    "height": 141,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/logo.png"
+  }
+}

@@ -1,0 +1,32 @@
+---
+import media from '../data/media.json';
+interface Props {
+  id: string;
+  alt: string;
+  class?: string;
+  eager?: boolean;
+}
+const { id, alt, class: className, eager = false } = Astro.props;
+const item = media[id as keyof typeof media];
+---
+
+{
+  item && (
+    <img
+      src={item.src}
+      width={item.width}
+      height={item.height}
+      alt={alt}
+      class={className}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={eager ? 'high' : undefined}
+      srcset={
+        id === 'hero'
+          ? '/images/hero-small.webp 700w, /images/hero.webp 1200w'
+          : undefined
+      }
+      sizes={id === 'hero' ? '(max-width: 700px) 100vw, 80vw' : undefined}
+    />
+  )
+}

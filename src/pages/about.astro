@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import Media from '../components/Media.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { reviews } from '../data/gallery';
+---
+
+<BaseLayout
+  title="О компании НИЯЗ — производство, сертификаты и отзывы"
+  description="НИЯЗ-ГРУПП — собственное производство плитки, заборов и металлоконструкций в Барановичах. Документы, сертификат тактильной плитки и отзывы организаций."
+  crumbs={[{ name: 'О нас', href: '/about/' }]}
+>
+  <PageHeading
+    title="Мы — НИЯЗ"
+    crumbs={[{ name: 'О нас' }]}
+    text="Производим продукцию для благоустройства. Помогаем воплощать проекты — от дорожки у дома до территории большого объекта."
+  />
+  <section class="container page-section split-content">
+    <Media
+      id="hero"
+      alt="Тактильная плитка собственного производства НИЯЗ"
+    /><div>
+      <span class="eyebrow">Собственное производство в Барановичах</span><h2>
+        Благоустройство<br />начинается с материала
+      </h2><p>
+        История нашей организации началась в 2005 году. Сегодня НИЯЗ-ГРУПП
+        производит тротуарную и тактильную плитку, железобетонные заборы и
+        металлоконструкции.
+      </p><p>
+        Работаем с частными клиентами и организациями. Доставляем и
+        устанавливаем продукцию по всей Беларуси. Образцы можно посмотреть по
+        адресу: Барановичи, Слонимское шоссе, 18.
+      </p><div class="about-facts">
+        <div>
+          <strong>С 2005 года</strong><span>история организации</span>
+        </div><div>
+          <strong>Вся Беларусь</strong><span>география работы</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-soft" id="documents">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Открыто о качестве</span><h2>Документы</h2><p>
+            Сертификат на тактильную плитку и письма из архива компании.
+          </p>
+        </div>
+      </div><div class="documents-grid">
+        <a
+          class="document-card"
+          href="/documents/certificate-tactile.jpg"
+          data-lightbox="Сертификат соответствия на тактильную плитку НИЯЗ-ГРУПП"
+          ><img
+            src="/documents/certificate-tactile.jpg"
+            alt="Сертификат на тактильную плитку"
+            width="960"
+            height="1280"
+            loading="lazy"
+          /><h3>Сертификат соответствия</h3><p>
+            Тактильная плитка · по 26.10.2030
+          </p></a
+        >{
+          [1, 2, 3].map((n) => (
+            <a
+              class="document-card"
+              href={`/documents/letter-${n}.jpg`}
+              data-lightbox="Письмо из архива НИЯЗ"
+            >
+              <>
+                <img
+                  src={`/documents/letter-${n}.jpg`}
+                  alt="Письмо из архива компании"
+                  width="896"
+                  height="1200"
+                  loading="lazy"
+                />
+                <h3>Письмо из архива</h3>
+                <p>Открыть оригинал</p>
+              </>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Нам доверяют</span><h2>Отзывы организаций</h2><p
+          >
+            Из отзывов, опубликованных на нашем прежнем сайте.
+          </p>
+        </div>
+      </div><div class="reviews-grid">
+        {
+          reviews.map((r) => (
+            <blockquote class="review">
+              <>
+                <p>«{r.text}»</p>
+                <footer class="review-author">
+                  {r.image && <Media id={r.image} alt={r.author} />}
+                  <div>
+                    <>
+                      <strong>{r.author}</strong>
+                      <span>{r.person}</span>
+                    </>
+                  </div>
+                </footer>
+              </>
+            </blockquote>
+          ))
+        }
+      </div>
+    </div>
+  </section><ContactBand />
+</BaseLayout>

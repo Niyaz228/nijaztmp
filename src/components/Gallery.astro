@@ -1,0 +1,89 @@
+---
+import Media from './Media.astro';
+import Icon from './Icon.astro';
+import media from '../data/media.json';
+import { gallery } from '../data/gallery';
+interface Props {
+  limit?: number;
+  filters?: boolean;
+}
+const { limit, filters = false } = Astro.props;
+const items = limit ? gallery.slice(0, limit) : gallery;
+---
+
+<div class="gallery-component">
+  {
+    filters && (
+      <div class="gallery-filters" hidden aria-label="Фильтр фотографий">
+        {['Все фотографии', 'Продукция', 'Укладка', 'Объекты'].map(
+          (name, i) => (
+            <button
+              type="button"
+              data-filter={i === 0 ? 'all' : name}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+            >
+              {name}
+            </button>
+          ),
+        )}
+      </div>
+    )
+  }
+  <div class="gallery-grid">
+    {
+      items.map((item) => (
+        <a
+          class="gallery-item"
+          href={media[item.image as keyof typeof media].src}
+          data-lightbox={item.caption}
+          data-group={item.group}
+        >
+          <>
+            <div class="gallery-picture">
+              <>
+                <Media id={item.image} alt={item.caption} />
+                <span class="zoom-icon">
+                  <Icon name="plus" />
+                </span>
+              </>
+            </div>
+            <span class="gallery-caption">
+              {item.caption}
+              <Icon name="diagonal" size={17} />
+            </span>
+          </>
+        </a>
+      ))
+    }
+  </div>
+  <p class="gallery-empty" hidden>В этой категории пока нет фотографий.</p>
+</div>
+<script>
+  document
+    .querySelectorAll<HTMLElement>('.gallery-component')
+    .forEach((gallery) => {
+      const filters = gallery.querySelector<HTMLElement>('.gallery-filters');
+      if (!filters) return;
+      filters.hidden = false;
+      filters.querySelectorAll<HTMLButtonElement>('button').forEach((button) =>
+        button.addEventListener('click', () => {
+          filters
+            .querySelectorAll('button')
+            .forEach((b) =>
+              b.setAttribute('aria-pressed', String(b === button)),
+            );
+          let visible = 0;
+          gallery
+            .querySelectorAll<HTMLElement>('[data-group]')
+            .forEach((item) => {
+              item.hidden =
+                button.dataset.filter !== 'all' &&
+                item.dataset.group !== button.dataset.filter;
+              if (!item.hidden) visible++;
+            });
+          const empty = gallery.querySelector<HTMLElement>('.gallery-empty');
+          if (empty) empty.hidden = visible > 0;
+        }),
+      );
+    });
+</script>

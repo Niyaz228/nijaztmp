@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeading from '../../components/PageHeading.astro';
+import ContactBand from '../../components/ContactBand.astro';
+import Icon from '../../components/Icon.astro';
+import { services } from '../../data/services';
+import { company } from '../../data/company';
+---
+
+<BaseLayout
+  title="Доставка, укладка плитки и установка заборов под ключ — НИЯЗ"
+  description="Доставка продукции, укладка тротуарной и тактильной плитки, установка заборов и ворот. Работы под ключ в Барановичах и по всей Беларуси."
+  crumbs={[{ name: 'Услуги', href: '/services/' }]}
+>
+  <PageHeading
+    title="Благоустройство под ключ"
+    crumbs={[{ name: 'Услуги' }]}
+    text="От собственного производства до готового результата. Доставляем и устанавливаем нашу продукцию для частных клиентов и организаций."
+  />
+  <section class="container page-section">
+    <div class="services-grid">
+      {
+        services.map((s) => (
+          <article id={s.id} class="service-card">
+            <>
+              <div class="service-icon">
+                <Icon name={s.icon} size={28} />
+              </div>
+              <h2>{s.name}</h2>
+              <p>{s.text}</p>
+              <a class="text-link" href={s.href || company.phoneHref}>
+                {s.href ? 'Подробнее об укладке' : 'Обсудить по телефону'}
+                <Icon size={18} />
+              </a>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section><ContactBand
+    title="Расскажите о вашем объекте"
+    text="Обсудим нужные работы, продукцию, доставку и стоимость. Удобнее всего — по телефону."
+  />
+</BaseLayout>

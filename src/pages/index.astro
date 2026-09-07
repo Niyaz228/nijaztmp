@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Media from '../components/Media.astro';
+import Icon from '../components/Icon.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import Gallery from '../components/Gallery.astro';
+import ContactBand from '../components/ContactBand.astro';
+import { categories } from '../data/catalog';
+import { company } from '../data/company';
+---
+
+<BaseLayout
+  title="НИЯЗ — тротуарная плитка, заборы и тактильная плитка в Беларуси"
+  description="Собственное производство в Барановичах. Тротуарная и тактильная плитка, заборы, ворота. Доставка и установка по всей Беларуси. Цены по телефону."
+>
+  <section class="hero">
+    <Media
+      id="hero"
+      alt="Тактильная плитка НИЯЗ, подготовленная к поставке"
+      class="hero-photo"
+      eager
+    /><div class="container hero-content">
+      <span class="eyebrow">Производим. Доставляем. Устанавливаем.</span><h1>
+        Тротуарная плитка<br />и заборы<br /><span>от производителя.</span>
+      </h1><p>
+        Для частных участков и городских пространств.<br />Из Барановичей — по
+        всей Беларуси.
+      </p><div class="button-row">
+        <a href="/catalog/" class="button">Смотреть каталог <Icon /></a><a
+          href={company.phoneHref}
+          class="text-link"><Icon name="phone" size={18} />Связаться с нами</a>
+      </div>
+    </div><span class="hero-caption">Тактильная плитка НИЯЗ</span>
+  </section>
+  <div class="benefit-strip">
+    <div class="container benefit-grid">
+      <div class="benefit">
+        <Icon name="factory" size={29} /><div>
+          <strong>Собственное производство</strong><p>
+            Плитка, ограждения и металлоконструкции
+          </p>
+        </div>
+      </div><div class="benefit">
+        <Icon name="truck" size={29} /><div>
+          <strong>Доставка по Беларуси</strong><p>
+            От производства до вашего объекта
+          </p>
+        </div>
+      </div><div class="benefit">
+        <Icon name="check" size={29} /><div>
+          <strong>Работы под ключ</strong><p>
+            Для частных клиентов и организаций
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Наша продукция</span><h2>
+            Всё для благоустройства
+          </h2>
+        </div><a class="text-link" href="/catalog/"
+          >Весь каталог <Icon size={19} /></a>
+      </div><div class="category-grid">
+        {categories.map((category) => <CategoryCard category={category} />)}
+      </div>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container service-preview">
+      <div>
+        <span class="eyebrow">От изделия до результата</span><h2>
+          Изготовим, привезём.<br />Поможем с установкой.
+        </h2><p>
+          Подбираете плитку для двора или продукцию для большого объекта?
+          Обсудим вашу задачу и возьмём работы под ключ.
+        </p><div class="button-row">
+          <a class="button button-light" href="/services/"
+            >Наши услуги <Icon /></a>
+        </div>
+      </div><div class="service-list">
+        <a class="service-row" href="/services/#delivery"
+          >Доставка продукции <Icon name="diagonal" /></a
+        ><a class="service-row" href="/services/ukladka-trotuarnoj-plitki/"
+          >Укладка тротуарной плитки <Icon name="diagonal" /></a
+        ><a class="service-row" href="/services/#fences"
+          >Установка заборов и ворот <Icon name="diagonal" /></a
+        ><a class="service-row" href="/services/#tactile"
+          >Монтаж тактильной плитки <Icon name="diagonal" /></a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="tactile-feature">
+        <div class="tactile-feature-image">
+          <Media
+            id="tactile-diagonal"
+            alt="Жёлтая тактильная плитка с диагональным рифом"
+          />
+        </div><div class="tactile-feature-text">
+          <span class="tag"
+            ><Icon name="check" size={15} />Сертификат соответствия</span
+          ><h2>
+            Тактильная плитка.<br />Доступная среда<br />начинается здесь.
+          </h2><p>
+            Собственное производство бетонной тактильной плитки. Рисунки
+            поверхности, размеры и документы — в отдельном разделе.
+          </p><a href="/catalog/taktilnaya-plitka/" class="text-link"
+            >Подробнее о тактильной плитке <Icon /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Наша продукция в деталях</span><h2>
+            Ближе к материалу
+          </h2>
+        </div><a class="text-link" href="/photos/"
+          >Все фотографии <Icon size={19} /></a>
+      </div><Gallery limit={3} />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container split-content">
+      <div>
+        <span class="eyebrow">Компания НИЯЗ</span><h2>
+          Производство рядом.<br />Решения для всей страны.
+        </h2>
+      </div><div>
+        <p>
+          Производим тротуарную и тактильную плитку, заборы и металлоконструкции
+          в Барановичах. Работаем с частными заказчиками и организациями по всей
+          Беларуси.
+        </p><p>
+          Приезжайте посмотреть образцы на Слонимское шоссе, 18. Время посещения
+          удобно согласовать по телефону.
+        </p><a class="text-link" style="margin-top:24px" href="/about/"
+          >О компании и документы <Icon /></a>
+      </div>
+    </div>
+  </section>
+  <ContactBand />
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/company';
+---
+
+<BaseLayout
+  title="Контакты НИЯЗ — Барановичи, Слонимское шоссе, 18"
+  description="Телефон НИЯЗ: +375 33 322-76-36. Email: firma.beton@mail.ru. Барановичи, ул. Слонимское шоссе, 18. Приезжайте посмотреть образцы продукции."
+  crumbs={[{ name: 'Контакты', href: '/contacts/' }]}
+>
+  <PageHeading
+    title="Будем на связи"
+    crumbs={[{ name: 'Контакты' }]}
+    text="Подскажем по продукции, стоимости, доставке и установке. Позвоните или напишите — обсудим вашу задачу."
+  />
+  <section class="container page-section">
+    <div class="contacts-layout">
+      <div>
+        <div class="contact-block">
+          <h2>Позвоните нам</h2><a class="big-phone" href={company.phoneHref}
+            >{company.phone}</a
+          ><a class="secondary-phone" href={company.secondPhoneHref}
+            >{company.secondPhone}</a
+          ><p>Цены и подробности заказа — по телефону.</p>
+        </div><div class="contact-block">
+          <h2>Напишите на почту</h2><a
+            class="contact-email"
+            href={company.emailHref}>{company.email}</a
+          ><p>Для частных клиентов и организаций.</p>
+        </div><div class="contact-block">
+          <h2>География работы</h2><p style="color:var(--ink);font-size:20px">
+            Барановичи и вся Беларусь
+          </p><p>Производство, продажа, доставка и установка под ключ.</p>
+        </div>
+      </div><div class="visit-card">
+        <Icon name="pin" size={35} /><span class="eyebrow"
+          >Приезжайте посмотреть образцы</span
+        ><h2>Познакомьтесь<br />с продукцией вживую</h2><p class="address">
+          Барановичи,<br />Слонимское шоссе, 18
+        </p><p>Время посещения уточните по телефону.</p><a
+          href={company.phoneHref}
+          class="button">Договориться о посещении <Icon size={18} /></a>
+      </div>
+    </div><p class="legal-line">
+      {company.legalName} · УНП {company.unp}<br />225413, Республика Беларусь,
+      Брестская область, {company.address}
+    </p>
+  </section>
+</BaseLayout>

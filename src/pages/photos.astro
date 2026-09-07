@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import Gallery from '../components/Gallery.astro';
+import ContactBand from '../components/ContactBand.astro';
+---
+
+<BaseLayout
+  title="Фото продукции и укладки плитки НИЯЗ"
+  description="Фотографии тактильной плитки НИЯЗ: готовая продукция, укладка и примеры применения. Производство в Барановичах, работа по всей Беларуси."
+  crumbs={[{ name: 'Фото', href: '/photos/' }]}
+>
+  <PageHeading
+    title="Продукция и её применение"
+    crumbs={[{ name: 'Фото' }]}
+    text="Тактильная плитка, детали поверхности и примеры укладки. Фотографии из нашего архива."
+  /><section class="container page-section">
+    <Gallery filters />
+  </section><ContactBand />
+</BaseLayout>
