@@ -1,0 +1,89 @@
+---
+import Media from './Media.astro';
+const slides = [
+  { id: 'hero', caption: 'Благоустройство частного двора', alt: 'Двор с мощением и декоративным забором' },
+  { id: 'hero-tactile', caption: 'Тактильная плитка НИЯЗ', alt: 'Тактильная плитка НИЯЗ, подготовленная к поставке' },
+  { id: 'paving-yard', caption: 'Тротуарная плитка в мощении', alt: 'Двор с разноцветной тротуарной плиткой' },
+];
+---
+<div class="hero-slides" aria-label="Фотографии продукции и благоустройства">
+  {slides.map((slide, i) => (
+    <div class:list={['hero-slide', { 'is-active': i === 0 }]} aria-hidden={i !== 0} data-caption={slide.caption}>
+      <Media id={slide.id} alt={slide.alt} class="hero-photo" eager={i === 0} />
+    </div>
+  ))}
+  <div class="hero-slide-footer">
+    <span class="hero-slide-caption">{slides[0].caption}</span>
+    <div class="hero-slide-controls" hidden>
+      {slides.map((slide, i) => <button type="button" class="hero-dot" aria-label={`Показать фото: ${slide.caption}`} aria-pressed={i === 0} data-slide={i}><span></span></button>)}
+      <button type="button" class="hero-pause" aria-label="Приостановить смену фотографий">Ⅱ</button>
+    </div>
+  </div>
+</div>
+<style>
+  .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 900ms ease; pointer-events: none; }
+  .hero-slide.is-active { opacity: 1; }
+  .hero-slide-footer { position: absolute; right: 48px; bottom: 20px; z-index: 3; display: flex; align-items: center; gap: 16px; }
+  .hero-slide-caption { font-size: 11px; color: white; }
+  .hero-slide-controls { display: flex; align-items: center; }
+  .hero-slide-controls[hidden] { display: none; }
+  button { width: 44px; height: 44px; border: 0; padding: 0; background: transparent; color: white; cursor: pointer; }
+  button:focus-visible { outline: 2px solid var(--yellow); outline-offset: -3px; border-radius: 6px; }
+  .hero-dot span { display: block; width: 7px; height: 7px; border-radius: 50%; margin: auto; background: #ffffff70; transition: background 200ms; }
+  .hero-dot[aria-pressed='true'] span { background: var(--yellow); }
+  .hero-pause { font-size: 17px; }
+  @media (max-width: 760px) {
+    .hero-slide-footer { left: 20px; right: 20px; bottom: 10px; gap: 4px; justify-content: space-between; }
+    .hero-slide-caption { font-size: 9px; max-width: 140px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-slide { transition: none; } }
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>('.hero-slides').forEach((root) => {
+    const hero = root.closest<HTMLElement>('.hero')!;
+    const slides = [...root.querySelectorAll<HTMLElement>('.hero-slide')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('[data-slide]')];
+    const pause = root.querySelector<HTMLButtonElement>('.hero-pause')!;
+    const caption = root.querySelector<HTMLElement>('.hero-slide-caption')!;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let active = 0;
+    let paused = motion.matches;
+    let hovering = false;
+    let focused = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let request = 0;
+    const updatePause = () => {
+      pause.textContent = paused ? '▶' : 'Ⅱ';
+      pause.setAttribute('aria-label', paused ? 'Возобновить смену фотографий' : 'Приостановить смену фотографий');
+    };
+    const schedule = () => {
+      clearTimeout(timer);
+      if (!paused && !hovering && !focused && !document.hidden) timer = setTimeout(() => void show((active + 1) % slides.length), 6000);
+    };
+    const show = async (index: number) => {
+      const token = ++request;
+      clearTimeout(timer);
+      const image = slides[index].querySelector('img')!;
+      image.loading = 'eager';
+      try { await image.decode(); } catch { schedule(); return; }
+      if (token !== request) return;
+      active = index;
+      slides.forEach((slide, i) => { slide.classList.toggle('is-active', i === active); slide.setAttribute('aria-hidden', String(i !== active)); });
+      dots.forEach((dot, i) => dot.setAttribute('aria-pressed', String(i === active)));
+      caption.textContent = slides[active].dataset.caption!;
+      schedule();
+    };
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { paused = true; updatePause(); void show(i); }));
+    pause.addEventListener('click', () => { paused = !paused; updatePause(); schedule(); });
+    hero.addEventListener('pointerenter', (event) => { if (event.pointerType === 'mouse') { hovering = true; schedule(); } });
+    hero.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+    hero.addEventListener('focusin', () => { focused = true; schedule(); });
+    hero.addEventListener('focusout', (event) => { focused = event.relatedTarget instanceof Node && hero.contains(event.relatedTarget); schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+    motion.addEventListener('change', () => { paused = motion.matches; updatePause(); schedule(); });
+    window.addEventListener('pagehide', () => { clearTimeout(timer); request++; });
+    window.addEventListener('pageshow', schedule);
+    root.querySelector<HTMLElement>('.hero-slide-controls')!.hidden = false;
+    updatePause(); schedule();
+  });
+</script>

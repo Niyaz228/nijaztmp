@@ -178,5 +178,11 @@
     "width": 900,
     "height": 1200,
     "source": "legacy/photos_new/ogranichiteli_parkovki/IMG_8131.JPG"
+  },
+  "hero-tactile": {
+    "src": "/images/hero-tactile.webp",
+    "width": 1200,
+    "height": 896,
+    "source": "legacy/for-new-agent/source-evolution/images/block-2/img_3363-15-06-22-18-43.jpg"
   }
 }

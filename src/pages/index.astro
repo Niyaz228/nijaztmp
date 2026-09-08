@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Media from '../components/Media.astro';
+import HeroSlides from '../components/HeroSlides.astro';
 import Icon from '../components/Icon.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import Gallery from '../components/Gallery.astro';
@@ -14,12 +15,7 @@ import { company } from '../data/company';
   description="Собственное производство в Барановичах. Тротуарная и тактильная плитка, заборы, ворота. Доставка и установка по всей Беларуси. Цены по телефону."
 >
   <section class="hero">
-    <Media
-      id="hero"
-      alt="Двор с мощением и декоративным забором"
-      class="hero-photo"
-      eager
-    /><div class="container hero-content">
+    <HeroSlides /><div class="container hero-content">
       <span class="eyebrow">Производим. Доставляем. Устанавливаем.</span><h1>
         Тротуарная плитка<br />и заборы<br /><span>от производителя.</span>
       </h1><p>
@@ -30,7 +26,7 @@ import { company } from '../data/company';
           href={company.phoneHref}
           class="text-link"><Icon name="phone" size={18} />Связаться с нами</a>
       </div>
-    </div><span class="hero-caption">Благоустройство частного двора</span>
+    </div>
   </section>
   <div class="benefit-strip">
     <div class="container benefit-grid">
