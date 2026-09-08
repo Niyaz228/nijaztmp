@@ -12,7 +12,7 @@ const { category: c } = Astro.props;
   class:list={['category-card', `category-${c.type}`]}
   href={categoryHref(c.slug)}
 >
-  <div class="category-image">
+  <div class:list={['category-image', { 'photo-fill': c.image && !['tactile-cones', 'tactile-lines', 'tactile-diagonal', 'grass', 'star', 'eight-bricks'].includes(c.image) }]}>
     {
       c.image ? (
         <Media id={c.image} alt={c.name} />

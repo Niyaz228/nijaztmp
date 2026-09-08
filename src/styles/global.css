@@ -1960,3 +1960,22 @@ summary:focus-visible {
     min-height: 530px;
   }
 }
+
+/* Photographs fill the frame; isolated product models retain their full silhouette. */
+.category-image.photo-fill,
+.product-image.photo-fill {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.category-image.photo-fill img,
+.product-image.photo-fill img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  mix-blend-mode: normal;
+}

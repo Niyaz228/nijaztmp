@@ -11,7 +11,7 @@ const { product: p, tactile = false } = Astro.props;
 ---
 
 <article class:list={['product-card', { tactile }]}>
-  <div class="product-image">
+  <div class:list={['product-image', { 'photo-fill': p.image && !['tactile-cones', 'tactile-lines', 'tactile-diagonal', 'grass', 'star', 'eight-bricks'].includes(p.image) }]}>
     {
       p.image ? (
         <Media id={p.image} alt={p.name} />
