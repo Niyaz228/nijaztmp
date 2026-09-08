@@ -199,10 +199,10 @@ summary:focus-visible {
   letter-spacing: -0.05em;
   flex-shrink: 0;
 }
-.logo svg {
-  color: var(--yellow);
-  width: 40px;
-  height: 40px;
+.logo img {
+  display: block;
+  width: 76px;
+  height: auto;
 }
 .logo-caption {
   display: block;
@@ -1345,9 +1345,9 @@ summary:focus-visible {
     font-size: 31px;
     gap: 9px;
   }
-  .logo svg {
-    width: 31px;
-    height: 31px;
+  .logo img {
+    width: 60px;
+    height: auto;
   }
   .logo-caption {
     font-size: 6.5px;
