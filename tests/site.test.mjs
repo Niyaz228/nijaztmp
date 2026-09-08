@@ -23,7 +23,9 @@ for (const path of pages) {
     assert.ok(existsSync(file), `Page /${path} must be generated`);
     const html = readFileSync(file, 'utf8');
     assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1);
+    assert.ok(html.includes('tel:+375333331073'));
     assert.ok(html.includes('tel:+375333227636'));
+    assert.match(html, /class="mobile-call-bar" href="tel:\+375333331073"/);
     assert.ok(html.includes('mailto:firma.beton@mail.ru'));
     assert.ok(html.includes(`https://nijaz.by/${path}`));
     assert.ok(

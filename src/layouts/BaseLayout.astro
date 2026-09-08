@@ -28,7 +28,7 @@ const schema = [
     name: company.name,
     legalName: company.legalName,
     url: 'https://nijaz.by',
-    telephone: '+375333227636',
+    telephone: company.phoneHref.replace('tel:', ''),
     email: company.email,
     address: {
       '@type': 'PostalAddress',

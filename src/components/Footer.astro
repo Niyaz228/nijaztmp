@@ -28,7 +28,8 @@ import Icon from './Icon.astro';
       <div class="footer-contacts">
         <h2>Свяжитесь с нами</h2><a
           class="footer-phone"
-          href={company.phoneHref}>{company.phone}</a
+          href={company.phoneHref}>{company.phone} <small>({company.phoneOperator})</small></a
+        ><a href={company.alternatePhoneHref}>{company.alternatePhone} <small>({company.alternatePhoneOperator})</small></a
         ><a href={company.emailHref}>{company.email}</a><p>{company.address}</p>
       </div>
     </div>

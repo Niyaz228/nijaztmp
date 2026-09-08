@@ -7,7 +7,7 @@ import { company } from '../data/company';
 
 <BaseLayout
   title="Контакты НИЯЗ — Барановичи, Слонимское шоссе, 18"
-  description="Телефон НИЯЗ: +375 33 322-76-36. Email: firma.beton@mail.ru. Барановичи, ул. Слонимское шоссе, 18. Приезжайте посмотреть образцы продукции."
+  description="Телефон НИЯЗ: +375 33 333-10-73. Email: firma.beton@mail.ru. Барановичи, ул. Слонимское шоссе, 18. Приезжайте посмотреть образцы продукции."
   crumbs={[{ name: 'Контакты', href: '/contacts/' }]}
 >
   <PageHeading
@@ -20,7 +20,8 @@ import { company } from '../data/company';
       <div>
         <div class="contact-block">
           <h2>Позвоните нам</h2><a class="big-phone" href={company.phoneHref}
-            >{company.phone}</a
+            >{company.phone}</a><span class="phone-operator">{company.phoneOperator}</span
+          ><a class="secondary-phone" href={company.alternatePhoneHref}>{company.alternatePhone}</a><span class="phone-operator">{company.alternatePhoneOperator}</span
           ><a class="secondary-phone" href={company.secondPhoneHref}
             >{company.secondPhone}</a
           ><p>Цены и подробности заказа — по телефону.</p>
@@ -49,3 +50,7 @@ import { company } from '../data/company';
     </p>
   </section>
 </BaseLayout>
+
+<style>
+  .phone-operator { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; }
+</style>
