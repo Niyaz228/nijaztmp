@@ -184,5 +184,23 @@
     "width": 1200,
     "height": 896,
     "source": "legacy/for-new-agent/source-evolution/images/block-2/img_3363-15-06-22-18-43.jpg"
+  },
+  "hero-fence-stone": {
+    "src": "/images/hero-fence-stone.webp",
+    "width": 1600,
+    "height": 1200,
+    "source": "legacy/photos_new/zabory/IMG_2337.HEIC"
+  },
+  "hero-city-paving": {
+    "src": "/images/hero-city-paving.webp",
+    "width": 960,
+    "height": 1280,
+    "source": "legacy/photos_new/plitka/kirpichik_bez_faski/IMG_2621.JPG"
+  },
+  "hero-fence-relief": {
+    "src": "/images/hero-fence-relief.webp",
+    "width": 1280,
+    "height": 960,
+    "source": "legacy/photos_new/zabory/IMG_7246.JPG"
   }
 }

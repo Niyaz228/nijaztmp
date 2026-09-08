@@ -4,6 +4,9 @@ const slides = [
   { id: 'hero', caption: 'Благоустройство частного двора', alt: 'Двор с мощением и декоративным забором' },
   { id: 'hero-tactile', caption: 'Тактильная плитка НИЯЗ', alt: 'Тактильная плитка НИЯЗ, подготовленная к поставке' },
   { id: 'paving-yard', caption: 'Тротуарная плитка в мощении', alt: 'Двор с разноцветной тротуарной плиткой' },
+  { id: 'hero-fence-stone', caption: 'Декоративный забор на участке', alt: 'Декоративный бетонный забор с рельефом камня' },
+  { id: 'hero-city-paving', caption: 'Кирпичик без фаски в городском мощении', alt: 'Городская дорожка из плитки «Кирпичик без фаски»' },
+  { id: 'hero-fence-relief', caption: 'Выразительный рельеф ограждения', alt: 'Бетонный забор с рельефной поверхностью' },
 ];
 ---
 <div class="hero-slides" aria-label="Фотографии продукции и благоустройства">
@@ -33,8 +36,8 @@ const slides = [
   .hero-dot[aria-pressed='true'] span { background: var(--yellow); }
   .hero-pause { font-size: 17px; }
   @media (max-width: 760px) {
-    .hero-slide-footer { left: 20px; right: 20px; bottom: 10px; gap: 4px; justify-content: space-between; }
-    .hero-slide-caption { font-size: 9px; max-width: 140px; }
+    .hero-slide-footer { left: 20px; right: 20px; bottom: 10px; gap: 0; flex-direction: column; align-items: flex-end; }
+    .hero-slide-caption { font-size: 9px; max-width: 100%; }
   }
   @media (prefers-reduced-motion: reduce) { .hero-slide { transition: none; } }
 </style>
