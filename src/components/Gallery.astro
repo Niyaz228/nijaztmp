@@ -6,9 +6,11 @@ import { gallery } from '../data/gallery';
 interface Props {
   limit?: number;
   filters?: boolean;
+  tactileOnly?: boolean;
 }
-const { limit, filters = false } = Astro.props;
-const items = limit ? gallery.slice(0, limit) : gallery;
+const { limit, filters = false, tactileOnly = false } = Astro.props;
+const selection = tactileOnly ? gallery.filter((item) => item.image.startsWith('tactile-')) : gallery;
+const items = limit ? selection.slice(0, limit) : selection;
 ---
 
 <div class="gallery-component">

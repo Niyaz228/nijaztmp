@@ -15,13 +15,13 @@ export interface Category {
 }
 const pressed: Product[] = [
   { name: 'Кирпичик', image: 'brick' },
-  { name: 'Кирпичик без фаски' },
-  { name: 'Старый город' },
-  { name: 'Римский Брук' },
+  { name: 'Кирпичик без фаски', image: 'brick-no-bevel' },
+  { name: 'Старый город', image: 'old-town' },
+  { name: 'Римский Брук', image: 'roman' },
   { name: 'Травница', image: 'grass' },
   { name: 'Катушка', image: 'coil' },
-  { name: 'Ромб' },
-  { name: 'Волна' },
+  { name: 'Ромб', image: 'rhombus' },
+  { name: 'Волна', image: 'wave' },
 ];
 const cast: Product[] = [
   ...[
@@ -70,7 +70,7 @@ export const categories: Category[] = [
     short: 'Для дорожек, дворов и площадок',
     intro:
       'Вибропрессованная и вибролитьевая плитка собственного производства. Выберите форму для вашего участка — стоимость и подходящий вариант обсудим по телефону.',
-    image: 'brick',
+    image: 'paving-yard',
     type: 'paving',
     products: [],
   },
@@ -107,7 +107,7 @@ export const categories: Category[] = [
       'Изготавливаем ворота и калитки, доставляем и устанавливаем. Позвоните, чтобы обсудить конструкцию и размеры для вашего объекта.',
     image: 'gates',
     type: 'metal',
-    products: [{ name: 'Ворота', image: 'gates' }, { name: 'Калитки' }],
+    products: [{ name: 'Ворота', image: 'gates' }, { name: 'Калитки', image: 'wicket' }],
   },
   {
     slug: 'ogranichiteli-parkovki',
@@ -115,8 +115,12 @@ export const categories: Category[] = [
     short: 'Для обустройства парковочных мест',
     intro:
       'Ограничители парковки собственного производства. Доступные исполнения, размеры и условия установки уточняйте по телефону.',
+    image: 'parking-yellow',
     type: 'parking',
-    products: [],
+    products: [
+      { name: 'Жёлтые ограничители', image: 'parking-yellow' },
+      { name: 'Красные ограничители', image: 'parking-red' },
+    ],
   },
 ];
 export const subcategories: Category[] = [
@@ -126,7 +130,7 @@ export const subcategories: Category[] = [
     short: 'Восемь форм для благоустройства',
     intro:
       'Кирпичик, старый город, травница и другие формы. Выберите рисунок мощения, а цвет, толщину и стоимость уточните у нас по телефону.',
-    image: 'brick',
+    image: 'paving-yard',
     type: 'paving',
     products: pressed,
   },

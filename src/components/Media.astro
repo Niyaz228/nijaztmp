@@ -23,7 +23,7 @@ const item = media[id as keyof typeof media];
       fetchpriority={eager ? 'high' : undefined}
       srcset={
         id === 'hero'
-          ? '/images/hero-small.webp 700w, /images/hero.webp 1200w'
+          ? '/images/hero-small.webp 700w, /images/hero.webp 1600w'
           : undefined
       }
       sizes={id === 'hero' ? '(max-width: 700px) 100vw, 80vw' : undefined}

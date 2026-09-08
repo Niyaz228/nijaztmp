@@ -1,9 +1,9 @@
 {
   "hero": {
     "src": "/images/hero.webp",
-    "width": 1200,
-    "height": 896,
-    "source": "legacy/for-new-agent/source-evolution/images/block-2/img_3363-15-06-22-18-43.jpg"
+    "width": 1600,
+    "height": 969,
+    "source": "legacy/photos_new/dvory/IMG_2564.HEIC"
   },
   "tactile-cones": {
     "src": "/images/tactile-cones.webp",
@@ -61,9 +61,9 @@
   },
   "brick": {
     "src": "/images/brick.webp",
-    "width": 200,
-    "height": 150,
-    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/55/Image00003-ba7f9e23ce.jpg"
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/kirpichik/IMG_3057.JPG"
   },
   "grass": {
     "src": "/images/grass.webp",
@@ -73,9 +73,9 @@
   },
   "coil": {
     "src": "/images/coil.webp",
-    "width": 200,
-    "height": 150,
-    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/54/Image00004-c14fe0f2d0.jpg"
+    "width": 1200,
+    "height": 900,
+    "source": "legacy/photos_new/plitka/katushka/IMG_5233.JPG"
   },
   "star": {
     "src": "/images/star.webp",
@@ -97,9 +97,9 @@
   },
   "gates": {
     "src": "/images/gates.webp",
-    "width": 200,
-    "height": 150,
-    "source": "legacy/for-new-agent/source-wayback-static/cache/widgetkit/gallery/65/Image00001-4dff3fee5f.jpg"
+    "width": 1085,
+    "height": 642,
+    "source": "legacy/photos_new/zabor_i_vorota/vorota/D7A39729-BAA2-4F49-AAF0-1AA88C2D6B48_1_201_a.jpeg"
   },
   "client-brest": {
     "src": "/images/client-brest.webp",
@@ -118,5 +118,65 @@
     "width": 117,
     "height": 141,
     "source": "legacy/for-new-agent/source-evolution/images/block-2/logo.png"
+  },
+  "paving-yard": {
+    "src": "/images/paving-yard.webp",
+    "width": 1200,
+    "height": 900,
+    "source": "legacy/photos_new/dvory/dvor.png"
+  },
+  "brick-no-bevel": {
+    "src": "/images/brick-no-bevel.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/kirpichik_bez_faski/IMG_5246.JPG"
+  },
+  "old-town": {
+    "src": "/images/old-town.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/staryj_gorod/IMG_2882.JPG"
+  },
+  "roman": {
+    "src": "/images/roman.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/rimskij_bruk/IMG_5251.JPG"
+  },
+  "rhombus": {
+    "src": "/images/rhombus.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/romb/IMG_8989.JPG"
+  },
+  "wave": {
+    "src": "/images/wave.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/volna/IMG_5248.JPG"
+  },
+  "paving-installation": {
+    "src": "/images/paving-installation.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/plitka/ukladka/IMG_2589.JPG"
+  },
+  "wicket": {
+    "src": "/images/wicket.webp",
+    "width": 1200,
+    "height": 900,
+    "source": "legacy/photos_new/zabor_i_kalitka/IMG_3071.JPG"
+  },
+  "parking-yellow": {
+    "src": "/images/parking-yellow.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/ogranichiteli_parkovki/IMG_6433.JPG"
+  },
+  "parking-red": {
+    "src": "/images/parking-red.webp",
+    "width": 900,
+    "height": 1200,
+    "source": "legacy/photos_new/ogranichiteli_parkovki/IMG_8131.JPG"
   }
 }

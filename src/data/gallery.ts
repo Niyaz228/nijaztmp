@@ -1,4 +1,13 @@
 export const gallery = [
+  { image: 'hero', caption: 'Двор с мощением и декоративным забором', group: 'Объекты' },
+  { image: 'gates', caption: 'Металлические ворота', group: 'Объекты' },
+  { image: 'paving-yard', caption: 'Мощение двора тротуарной плиткой', group: 'Объекты' },
+  { image: 'rhombus', caption: 'Плитка «Ромб» в мощении', group: 'Объекты' },
+  { image: 'wicket', caption: 'Калитка в ограждении участка', group: 'Объекты' },
+  { image: 'paving-installation', caption: 'Укладка тротуарной плитки', group: 'Укладка' },
+  { image: 'parking-yellow', caption: 'Жёлтые ограничители парковки', group: 'Продукция' },
+  { image: 'parking-red', caption: 'Красные ограничители парковки', group: 'Продукция' },
+
   {
     image: 'tactile-stock',
     caption: 'Тактильная плитка с усечёнными конусами',
