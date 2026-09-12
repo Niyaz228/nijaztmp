@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: 'https://nijaz.by',
+  site: 'https://niyaz228.github.io/',
   output: 'static',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
